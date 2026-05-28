@@ -97,6 +97,24 @@ nav {
 }
 .nav-cta:hover { background: var(--green-dim) !important; }
 
+/* ESTILOS DO MENU HAMBÚRGUER */
+.hamburger {
+  display: none; /* Escondido no computador */
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 1000; /* Garante que fica por cima do menu aberto */
+}
+
+.hamburger .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--white);
+  transition: all 0.3s ease-in-out;
+  border-radius: 2px;
+}
+
 /* HERO */
 .hero {
   min-height: 100vh;
@@ -798,7 +816,44 @@ footer p {
 
 /* MOBILE */
 @media (max-width: 768px) {
-  .nav-links { display: none; }
+  .hamburger {
+    display: flex;
+  }
+
+  /* Transforma o menu numa tela cheia preta */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Esconde o menu fora da tela à direita */
+    width: 100%;
+    height: 100vh;
+    background-color: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transition: right 0.4s ease-in-out; /* Efeito de deslizar */
+    z-index: 999;
+  }
+
+  /* Classe que o JavaScript vai adicionar para mostrar o menu */
+  .nav-links.active {
+    right: 0;
+  }
+
+  /* Animação do hambúrguer a transformar-se num 'X' */
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    background-color: var(--green); /* Fica verde ao fechar */
+  }
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    background-color: var(--green);
+  }
   .hero { grid-template-columns: 1fr; }
   .hero-right { display: none; }
   .schedule-wrap { grid-template-columns: 1fr; }
