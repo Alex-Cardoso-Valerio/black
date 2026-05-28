@@ -806,6 +806,38 @@ footer p {
   color: var(--white-dim);
 }
 
+/* ESTILOS SOCIAIS DO RODAPÉ (LUXO ESCURO / DOURADO) */
+.footer-social {
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.footer-social a {
+  color: var(--white-dim);
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: flex;
+}
+
+.footer-social a:hover {
+  color: #D4AF37; /* Tom dourado sofisticado */
+  transform: translateY(-3px); /* Leve salto ao passar o rato */
+}
+
+/* Ajuste mobile para o rodapé novo */
+@media (max-width: 768px) {
+  .footer-left {
+    flex-direction: column;
+    width: 100%;
+    gap: 1.5rem !important;
+    margin-bottom: 1rem;
+  }
+  footer {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
 /* REVEAL */
 .reveal {
   opacity: 0;
